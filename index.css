@@ -1,0 +1,311 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+/*
+CSS. STRUCTURE
+
+control+f, then search: these names for start of each section+sidebar:
+
+.sidebar + main.content + .row 
+.card-01 + .hero-image + every paragraph is within this box.
+.card-02 + img for box 2 and box 5 is within here.
+.card-03 + h1, h2, h3 is within here.
+.card-04
+.card-05
+@media screen and (max-width: 1080px) media queries
+
+|           BOX 1          |
+|BOX 2    |BOX 2   |  BOX 2|
+          |BOX 3|          |
+|BOX 4 |BOX 4 |BOX 4 |BOX 4|
+|       BOX 5    |    BOX 5|
+*/
+
+:root{
+  /*font-sizes*/
+  --fs-800: clamp(5em, 1vw + 0.1rem, 10rem );
+  --fs-700: clamp(1.75rem, 1vw + 0.1rem, 4rem );
+  --fs-600: clamp(1.25rem, 1vw + 0.1rem, 3.5rem );
+  --fs-400: clamp(1rem, 1vw + 0.1rem, 1.25rem );
+
+  /*line heigh are generalized here based on 
+  the fourth child/fourth box of box 4 because the paragraphs inside of fourth box
+  needs more space to fill its "content" to look more like the printed article*/
+  --lh-1: 1.43em;
+  --lh-2: calc(var(--lh-1)*0.85);
+  --lh-3: calc(var(--lh-1) - 0.2em);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+p{
+  color: rgb(0, 0, 0);
+}
+
+/* SIDEBAR STARTS */
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color: rgb(241, 241, 241);
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+  }
+  /* Sidebar links */
+  .sidebar a {
+    display: block;
+    color: rgb(0, 0, 0);
+    padding: 16px;
+    text-decoration: none;
+  }
+  /* colors of links */
+  .sidebar a.active {
+    background-color: rgb(0, 0, 102);
+    color: rgb(255, 255, 255);
+  }
+  /* hover effect on links with mouse-over */
+  .sidebar a:hover {
+    background-color: rgb(0, 64, 255);
+    color: rgb(255, 255, 255);
+  }
+  /* The value of the margin-left property needs
+  to match the value of the sidebar's width property */
+  main.content {
+    margin-left: 15%;
+  }
+  .row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  /* SIDEBAR ENDS */
+
+  /* CARD 1 STARTS  */
+  .card-01 {
+    position: relative;
+    flex: 1;
+    max-width: 100%;
+    height: 100vh;
+  }
+  .hero-image {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1)), url("images/jon-koop-khYVyHiNZo0-unsplash.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  .bottom-left {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    max-width: 540px;
+  }
+  /*targets every single paragraph on both pages*/
+  .bottom-left,.card-02 p,.card-04 p, .card-05 p{
+    font-size: var(--fs-400);
+    padding: 0 0.2rem;
+  }
+  .bottom-left{
+    line-height: var(--lh-3);
+  }
+  .card-04 p{
+    line-height: var(--lh-2);
+  }
+  .card-02 p,.card-05 p{
+    line-height: var(--lh-3);
+  }
+  span.font-weight{
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  span.foto{
+    font-size: var(--fs-400);
+    text-transform: uppercase;
+    font-weight: bold;
+    right: 0;
+  }
+
+  /* CARD 1 ENDS */
+
+  /* CARD 2 STARTS */
+
+  .card-02 {
+    position: relative;
+    flex: 1;
+    max-width: 600px;
+    margin: 8px 20px 3px 20px;
+  }
+
+  
+  /*based on: 1 vh equals 19,2px. the heigh of card-02 is 384px. this image will take 384*0,8=307.2
+  THIS WILL SELECTS EVERY IMAGE FOR BOXES IN BOX 2 AND BOX 5.*/
+  img{
+    width: 100%;
+    height: 307.2px;             
+    object-fit: cover;
+  }
+
+  /* CARD 2 ENDS */
+
+  /* CARD 3 STARTS */
+
+  .card-03 {
+    position: relative;
+    flex: 1;
+    max-width: 1600px;
+    margin: 3px 20px;
+    text-align: center;
+  }
+  h1,h2,h3{
+    line-height: var(--lh-2);
+  }
+  h1{
+    font-size: var(--fs-800);
+    padding: 0.01em;
+  }
+  h2{
+    font-size: var(--fs-700);
+    padding: 0.2em;
+  }
+  h3{
+    font-size: var(--fs-600);
+    padding: 5px;
+  }
+  
+  h1::first-letter, h3::first-letter{
+    text-transform: capitalize;
+  }
+  span.bmw-title{
+    text-transform: uppercase;
+  }
+
+  /* CARD 3 ENDS */
+
+  /* CARD 4 STARTS */
+
+  .card-04 {
+    position: relative;
+    flex: 1;
+    max-width: 400px;
+    padding: 10px;
+  }
+  .author, .author-email{
+    text-transform: uppercase;
+  }
+  .author{
+    font-weight: bold;
+  }
+  .author-email{
+    font-style: normal;
+    margin-bottom: 1em;
+  }
+  .author-email a{
+    color: rgb(0,0,0);
+    text-decoration: none;
+  }
+  /* check the root at top for changing values 
+  meant to fit every box in box 4*/
+
+  p.indent{
+    text-indent: 1em;
+    padding: 0.25em;
+  }
+  .card-04:last-child p{
+    line-height: var(--lh-1);
+  }
+  .card-04:nth-child(4) img{
+    object-fit: contain;
+    height: auto;
+  }
+  /* This is create a small margin between box 1 and box 2,
+   box 2 and box3, box 3 and box 4, 
+   while exluding right margin on box 4.
+   box 1 gets a margin to the left giving the what looks
+   like the container of these four boxes correct margin*/
+  .card-04:first-child{
+    margin: 0px 4px 0px 20px;
+  }
+  .card-04:nth-child(2){
+    margin: 0px 4px 0px 0px;
+  }
+  .card-04:nth-child(3){
+    margin: 0px 4px 0px 0px;
+  }
+  /*box 4 gets a margin to the right, to correct the
+  whole "container" of these four boxes to match the other boxes margin.*/
+  .card-04:last-child{
+    margin: 0px 20px 0px 0px;
+  }
+
+  /* CARD 5 ENDS */
+
+  /* CARD 5 STARTS */
+
+  .card-05 {
+    position: relative;
+    margin: 3px 20px;
+  }
+  
+  /*made the first child larger, 
+  while the other one is kepth a bit smaller*/
+  .card-05:first-child{
+    flex: 3;
+    max-width: 1000px;
+  }
+  .card-05:last-child{
+    flex: 1;
+    max-width: 900px;
+  }
+
+  .card-05:first-child, .card-05:last-child{
+    font-size: var(--fs-400);
+  }
+
+  /* CARD 5 ENDS */
+  
+  /* On screens that are less than 900px wide start*/
+
+  @media screen and (max-width: 900px) {
+    /*  the sidebar becomes a topbar */
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {
+      float: left;
+    }
+    /*keep as must space as possible*/
+    main.content {
+      margin-left: 0;
+    }
+    /*to change the widt of the text on the hero image*/
+    .bottom-left {
+      max-width: 370px;
+    }
+    /*changing the margin to fit all the boxes in box 4 with box 2,3 and 5*/
+    .card-04:nth-child(1),.card-04:nth-child(2),.card-04:nth-child(3),.card-04:nth-child(4){
+      margin: 3px 20px;
+    }
+    /* changing the shape of the website 
+    in less than 800px wide so every box 
+    is just one column downwards*/
+    
+    
+    .card-02, .card-03, .card-04, .card-05:nth-child(1),.card-05:nth-child(2){
+      flex: 100%;
+      max-width: 850px;
+    }
+    /*.row{
+      flex-direction: column;
+    }
+    */
+  }
+    /* On screens that are less than 900px end*/
